@@ -1,0 +1,30 @@
+.footer {
+  padding: 42px 252px;
+  height: 148px;
+  background-color: #000000;
+}
+
+.footer .ant-typography {
+  color: #ffffff;
+}
+
+.footer .footer-social {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.footer .footer-social a {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer a {
+  color: #ffffff;
+  font-size: 21px;
+}
+
+.footer .footer-copyright {
+  text-align: center;
+  display: block;
+  margin-top: 31px;
+}
