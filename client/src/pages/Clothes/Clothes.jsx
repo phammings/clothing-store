@@ -12,7 +12,7 @@ const CheckboxCategoryFilter = {
     GENDERS: "GENDERS"
 };
 
-const Menu = () => {
+const Clohtes = () => {
     return (
         <Layout>
             <Layout.Content className={"login-content"}>
@@ -56,4 +56,4 @@ const Menu = () => {
     );
 };
 
-export default Menu;
+export default Clohtes;
