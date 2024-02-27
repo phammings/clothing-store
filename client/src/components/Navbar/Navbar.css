@@ -1,0 +1,47 @@
+.navbar-logo-wrapper {
+    padding-top: 21px;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar-logo {
+    width: 20%;
+    height: height;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .navbar-wrapper {
+    background-color: #000000;
+  }
+  
+  .navbar-logo:hover {
+    color: #46cbff;
+    transition: .4s;
+  }
+  
+  .navbar-wrapper a {
+    color: #ffffff;
+    transition: .4s;
+  }
+  
+  .navbar-cart {
+    padding: 0 !important;
+  }
+  
+  .navbar-cart svg {
+    font-size: 31px;
+  }
+  
+  .navbar-wrapper a:hover {
+    color: #46cbff;
+    text-decoration: none;
+  }
+  
+  .navbar-wrapper ul li {
+    padding: 16px;
+    font-weight: 500;
+  }
+  
+  
