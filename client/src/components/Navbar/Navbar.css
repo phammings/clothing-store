@@ -1,47 +1,42 @@
 .navbar-logo-wrapper {
-    padding-top: 21px;
     background-color: #000000;
     display: flex;
     justify-content: center;
-  }
-  
-  .navbar-logo {
-    width: 20%;
+}
+
+.navbar-logo-wrapper a {
+    text-decoration: none;
+}
+
+.navbar-logo {
     height: height;
     color: #ffffff;
     text-align: center;
-  }
-  
-  .navbar-wrapper {
+}
+
+.navbar-wrapper {
     background-color: #000000;
-  }
-  
-  .navbar-logo:hover {
+}
+
+.navbar-logo:hover {
     color: #46cbff;
     transition: .4s;
-  }
-  
-  .navbar-wrapper a {
+}
+
+.navbar-wrapper a {
     color: #ffffff;
+    text-decoration: none;
     transition: .4s;
-  }
-  
-  .navbar-cart {
-    padding: 0 !important;
-  }
-  
-  .navbar-cart svg {
-    font-size: 31px;
-  }
-  
-  .navbar-wrapper a:hover {
+}
+
+.navbar-wrapper a:hover {
     color: #46cbff;
     text-decoration: none;
-  }
-  
-  .navbar-wrapper ul li {
-    padding: 16px;
+}
+
+.navbar-wrapper ul li {
+    padding: 10px;
     font-weight: 500;
-  }
+}
   
   
