@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { Badge } from "antd";
 import './Navbar.css';
 
 const NavBar = () => {
@@ -17,6 +19,20 @@ const NavBar = () => {
                     <ul style={{ display: 'flex', listStyle: 'none', margin: '0 0 0 30px', padding: 0 }}>
                         <li>
                             <Link to={"/"}>Home</Link>
+                        </li>
+                        <li>
+                            <Link to={{ pathname: "/"}}>Clothes</Link>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul style={{ display: 'flex', listStyle: 'none', margin: '0 30px 0 0', padding: 0 }}>
+                        <li className={"navbar-cart"} style={{margin: '13px 0 0 30px'}}>
+                            <Badge size="small" color={"red"}>
+                                <Link to={"/"}>
+                                    <ShoppingCartOutlined />
+                                </Link>
+                            </Badge>
                         </li>
                     </ul>
                 </div>

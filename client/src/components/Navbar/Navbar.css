@@ -9,6 +9,7 @@
 }
 
 .navbar-logo {
+    width: 20%;
     height: height;
     color: #ffffff;
     text-align: center;
@@ -35,8 +36,16 @@
 }
 
 .navbar-wrapper ul li {
-    padding: 10px;
+    padding: 16px;
     font-weight: 500;
 }
+
+.navbar-cart {
+    padding: 0 !important;
+  }
+  
+  .navbar-cart svg {
+    font-size: 32px;
+  }
   
   
