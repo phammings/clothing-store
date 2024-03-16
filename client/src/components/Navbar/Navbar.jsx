@@ -7,7 +7,7 @@ import { Badge, Space } from "antd";
 import { selectUserFromUserState } from "../../redux-toolkit/user/user-selector";
 import { selectCartItemsCount } from "../../redux-toolkit/cart/cart-selector";
 import { logoutSuccess } from "../../redux-toolkit/user/user-slice";
-import { ACCOUNT, BASE, LOGIN, MENU, REGISTRATION } from "../../constants/routeConstants";
+import { ACCOUNT, BASE, LOGIN, CLOTHES, REGISTRATION } from "../../constants/routeConstants";
 import { CART } from "../../constants/urlConstants";
 import "./NavBar.css";
 
@@ -79,7 +79,7 @@ const NavBar = () => {
                             <Link to={BASE}>Home</Link>
                         </li>
                         <li>
-                            <Link to={{ pathname: MENU, state: { id: "all" } }}>Clothes</Link>
+                            <Link to={{ pathname: CLOTHES, state: { id: "all" } }}>Clothes</Link>
                         </li>
                     </ul>
                 </div>
