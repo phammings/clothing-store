@@ -1,18 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, Col, Divider, Form, Row } from "antd";
-
+import { useDispatch, useSelector } from "react-redux";
 import ReCAPTCHA from "react-google-recaptcha";
 import { LockOutlined, MailOutlined, UserAddOutlined, UserOutlined } from "@ant-design/icons";
 
+import { selectErrors, selectIsAuthLoading, selectIsRegistered } from "../../redux-toolkit/auth/auth-selector";
 import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
 import ContentTitle from "../../components/ContentTitle/ContentTitle";
-
+import { registration } from "../../redux-toolkit/auth/auth-thunks";
 import FormInput from "../../components/FormInput/FormInput";
 import IconButton from "../../components/IconButton/IconButton";
-
+import { resetAuthState, setAuthLoadingState } from "../../redux-toolkit/auth/auth-slice";
+import { LoadingStatus } from "../../types/types";
 
 const Registration = () => {
- 
+    const dispatch = useDispatch();
+    const isRegistered = useSelector(selectIsRegistered);
+    const isLoading = useSelector(selectIsAuthLoading);
+    const errors = useSelector(selectErrors);
+    const [captchaValue, setCaptchaValue] = useState("");
+    const [form] = Form.useForm();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        dispatch(setAuthLoadingState(LoadingStatus.LOADED));
+
+        return () => {
+            dispatch(resetAuthState());
+        };
+    }, []);
+
+    useEffect(() => {
+        setCaptchaValue("");
+    }, [isRegistered]);
+
+    const onChangeRecaptcha = (token) => {
+        setCaptchaValue(token);
+    };
+
+    const onClickSignIn = (userData) => {
+        dispatch(registration({ ...userData, captcha: captchaValue }));
+        window.grecaptcha.reset();
+    };
+
     return (
         <ContentWrapper>
             <div style={{ textAlign:"center"}}>
