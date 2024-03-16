@@ -17,7 +17,7 @@ export const initialState = {
     loadingState: LoadingStatus.LOADING
 };
 
-export const clothesSlice = createSlice({
+export const ClothesSlice = createSlice({
     name: "clothes",
     initialState,
     reducers: {
@@ -25,8 +25,8 @@ export const clothesSlice = createSlice({
             state.clothes = action.payload;
             state.loadingState = LoadingStatus.LOADED;
         },
-        removePerfumeById(state, action) {
-            state.clothes = state.clothes.filter((perfume) => perfume.id !== action.payload);
+        removeClothById(state, action) {
+            state.clothes = state.clothes.filter((cloth) => cloth.id !== action.payload);
             state.loadingState = LoadingStatus.LOADED;
         },
         resetClothesState() {
@@ -85,5 +85,5 @@ export const clothesSlice = createSlice({
     }
 });
 
-export const { setClothes, removePerfumeById, resetClothesState } = clothesSlice.actions;
-export default clothesSlice.reducer;
+export const { setClothes, removeClothById, resetClothesState } = ClothesSlice.actions;
+export default ClothesSlice.reducer;

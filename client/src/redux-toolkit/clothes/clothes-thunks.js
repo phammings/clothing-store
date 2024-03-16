@@ -2,19 +2,19 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import RequestService from "../../utils/request-service";
 import {
-    Clothes,
-    Clothes_GRAPHQL_IDS,
-    Clothes_GRAPHQL_Clothes,
-    Clothes_IDS,
-    Clothes_SEARCH,
-    Clothes_SEARCH_TEXT
+    CLOTHES,
+    CLOTHES_GRAPHQL_IDS,
+    CLOTHES_GRAPHQL_CLOTHES,
+    CLOTHES_IDS,
+    CLOTH_SEARCH,
+    CLOTH_SEARCH_TEXT
 } from "../../constants/urlConstants";
-import { geClothesByIdsQuery, getAllClothesByQuery } from "../../utils/graphql-query/clothes-query";
+import { geClothesByIdsQuery, getAllClothesByQuery } from "../../utils/graphql-query/cloth-query";
 
 export const fetchClothes = createAsyncThunk(
-    "Clothes/fetchClothes",
+    "clothes/fetchClothes",
     async (page) => {
-        const response = await RequestService.get(`${Clothes}?page=${page}`);
+        const response = await RequestService.get(`${CLOTHES}?page=${page}`);
         return {
             items: response.data,
             pagesCount: parseInt(response.headers["page-total-count"]),
@@ -24,17 +24,17 @@ export const fetchClothes = createAsyncThunk(
 );
 
 export const fetchClothesByIds = createAsyncThunk(
-    "Clothes/fetchClothesByIds",
+    "clothes/fetchClothesByIds",
     async (ids) => {
-        const response = await RequestService.post(Clothes_IDS, ids);
+        const response = await RequestService.post(CLOTHES_IDS, ids);
         return response.data;
     }
 );
 
 export const fetchClothesByFilterParams = createAsyncThunk(
-    "Clothes/fetchClothesByFilterParams",
+    "clothes/fetchClothesByFilterParams",
     async (filter) => {
-        const response = await RequestService.post(`${Clothes_SEARCH}?page=${filter.currentPage}`, filter);
+        const response = await RequestService.post(`${CLOTH_SEARCH}?page=${filter.currentPage}`, filter);
         return {
             items: response.data,
             pagesCount: parseInt(response.headers["page-total-count"]),
@@ -44,9 +44,9 @@ export const fetchClothesByFilterParams = createAsyncThunk(
 );
 
 export const fetchClothesByInputText = createAsyncThunk(
-    "Clothes/fetchClothesByInputText",
+    "clothes/fetchClothesByInputText",
     async (data) => {
-        const response = await RequestService.post(`${Clothes_SEARCH_TEXT}?page=${data.currentPage}`, data);
+        const response = await RequestService.post(`${CLOTH_SEARCH_TEXT}?page=${data.currentPage}`, data);
         return {
             items: response.data,
             pagesCount: parseInt(response.headers["page-total-count"]),
@@ -57,17 +57,17 @@ export const fetchClothesByInputText = createAsyncThunk(
 
 // GraphQL thunks
 export const fetchClothesByQuery = createAsyncThunk(
-    "Clothes/fetchClothesByQuery",
+    "clothes/fetchClothesByQuery",
     async () => {
-        const response = await RequestService.post(Clothes_GRAPHQL_Clothes, { query: getAllClothesByQuery });
-        return response.data.data.Clothes;
+        const response = await RequestService.post(CLOTHES_GRAPHQL_CLOTHES, { query: getAllClothesByQuery });
+        return response.data.data.clothes;
     }
 );
 
 export const fetchClothesByIdsQuery = createAsyncThunk(
-    "Clothes/fetchClothesByIdsQuery",
+    "clothes/fetchClothesByIdsQuery",
     async (ids) => {
-        const response = await RequestService.post(Clothes_GRAPHQL_IDS, { query: geClothesByIdsQuery(ids) });
-        return response.data.data.ClothesIds;
+        const response = await RequestService.post(CLOTHES_GRAPHQL_IDS, { query: geClothesByIdsQuery(ids) });
+        return response.data.data.clothesIds;
     }
 );
