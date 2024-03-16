@@ -1,13 +1,39 @@
-import React from "react";
+import React, { FC, ReactElement, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Alert, Col, Divider, Form, Row, Typography } from "antd";
 import { MailOutlined, SendOutlined } from "@ant-design/icons";
 
+import {
+    selectErrorMessage,
+    selectIsAuthLoading,
+    selectSuccessMessage
+} from "../../redux-toolkit/auth/auth-selector";
+import { setAuthLoadingState } from "../../redux-toolkit/auth/auth-slice";
+import { LoadingStatus } from "../../types/types";
 import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
 import ContentTitle from "../../components/ContentTitle/ContentTitle";
 import FormInput from "../../components/FormInput/FormInput";
 import IconButton from "../../components/IconButton/IconButton";
+import { forgotPassword } from "../../redux-toolkit/auth/auth-thunks";
 
 const ForgotPassword = () => {
+    const dispatch = useDispatch();
+    const [form] = Form.useForm();
+    const error = useSelector(selectErrorMessage);
+    const success = useSelector(selectSuccessMessage);
+    const isLoading = useSelector(selectIsAuthLoading);
+
+    useEffect(() => {
+        dispatch(setAuthLoadingState(LoadingStatus.LOADED));
+    }, []);
+
+    useEffect(() => {
+        form.resetFields();
+    }, [success]);
+
+    const onClickSend = (value) => {
+        dispatch(forgotPassword(value.email));
+    };
 
     return (
         <ContentWrapper>
