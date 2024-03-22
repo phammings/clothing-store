@@ -32,9 +32,8 @@ import Product from "./components/pages/Product/Product";
 import ResetPassword from "./components/pages/ResetPassword/ResetPassword";
 import Account from "./components/pages/Account/Account";
 import OrderFinalize from "./components/pages/OrderFinalize/OrderFinalize";
-import NavBar from "./components/NavBar/NavBar";
+import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import OAuth2RedirectHandler from "./security/oauth2/OAuth2RedirectHandler";
 import "./App.css";
 
 const App = () => {
@@ -53,7 +52,7 @@ const App = () => {
 
     return (
         <>
-            <NavBar />
+            <Navbar />
             <Switch>
                 <Route exact path={BASE} component={Home} />
                 <Route exact path={LOGIN} component={Login} />
