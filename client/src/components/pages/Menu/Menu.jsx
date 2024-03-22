@@ -1,31 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Layout, Pagination, Typography } from "antd";
+import { useLocation } from "react-router-dom";
 
-import { selectIsClothesLoading, selectClothes } from "../../redux-toolkit/clothes/clothes-selector";
-import { fetchClothesByFilterParams, fetchClothesByInputText } from "../../redux-toolkit/clothes/clothes-thunks";
-import { resetClothesState } from "../../redux-toolkit/perfumes/perfumes-slice";
-import { useSearch } from "../../hooks/useSearch";
-import { MAX_PAGE_VALUE, usePagination } from "../../hooks/usePagination";
-
-import ClothesCheckbox from "./components/ClothesCheckbox";
-import ClothesRadio from "./components/ClothesRadio";
-import ClothesSorter from "./components/ClothesSorter";
-import { gender, brands, price } from "./ClothesData";
-import "./Clothes.css";
+import MenuCheckboxSection from "./MenuSection/MenuCheckboxSection";
+import { selectIsClothesLoading, selectClothes } from "../../../state-redux/clothes/clothes-selector";
+import { fetchClothesByFilterParams, fetchClothesByInputText } from "../../../state-redux/clothes/clothes-thunks";
+import { resetClothesState } from "../../../state-redux/clothes/clothes-slice";
+import MenuRadioSection from "./MenuSection/MenuRadioSection";
+import MenuSorter from "./MenuSorter/MenuSorter";
+import ClothCard from "../../ClothCard/ClothCard";
+import SelectSearchData from "../../SelectSearchData/SelectSearchData";
+import InputSearch from "../../InputSearch/InputSearch";
+import Spinner from "../../Spinner/Spinner";
+import { MAX_PAGE_VALUE, usePagination } from "../../../hooks/usePagination";
+import { gender, clother, price } from "./MenuData";
+import { useSearch } from "../../../hooks/useSearch";
+import "./Menu.css";
 
 const CheckboxCategoryFilter = {
-    BRANDS: "BRANDS",
+    CLOTHERS: "CLOTHERS",
     GENDERS: "GENDERS"
 };
 
-const Clohtes = () => {
+const Menu = () => {
     const dispatch = useDispatch();
     const clothes = useSelector(selectClothes);
     const isClothesLoading = useSelector(selectIsClothesLoading);
     const location = useLocation();
     const [filterParams, setFilterParams] = useState({
-        brands: [],
+        clothers: [],
         genders: [],
         prices: [1, 999]
     });
@@ -34,30 +38,30 @@ const Clohtes = () => {
     const { searchValue, searchTypeValue, resetFields, form, onSearch, handleChangeSelect } = useSearch();
 
     useEffect(() => {
-        const clohtesData = location.state.id;
+        const clothData = location.state.id;
 
-        if (clohtesData === "female" || clohtesData === "male") {
+        if (clothData === "female" || clothData === "male") {
             dispatch(
                 fetchClothesByFilterParams({
                     ...filterParams,
-                    genders: [...filterParams.genders, clohtesData],
+                    genders: [...filterParams.genders, clothData],
                     sortByPrice,
                     currentPage: 0
                 })
             );
-            setFilterParams((prevState) => ({ ...prevState, genders: [...prevState.genders, perfumeData] }));
-        } else if (perfumeData === "all") {
+            setFilterParams((prevState) => ({ ...prevState, genders: [...prevState.genders, clothData] }));
+        } else if (clothData === "all") {
             dispatch(fetchClothesByFilterParams({ ...filterParams, sortByPrice, currentPage: 0 }));
         } else {
             dispatch(
                 fetchClothesByFilterParams({
                     ...filterParams,
-                    brands: [...filterParams.brands, clohtesData],
+                    clothers: [...filterParams.clothers, clothData],
                     sortByPrice,
                     currentPage: 0
                 })
             );
-            setFilterParams((prevState) => ({ ...prevState, brands: [...prevState.brands, clohtesData] }));
+            setFilterParams((prevState) => ({ ...prevState, clothers: [...prevState.clothers, clothData] }));
         }
         window.scrollTo(0, 0);
 
@@ -71,9 +75,9 @@ const Clohtes = () => {
     }, [filterParams, sortByPrice]);
 
     const onChangeCheckbox = (checkedValues, category) => {
-        if (CheckboxCategoryFilter.BRANDS === category) {
+        if (CheckboxCategoryFilter.CLOTHERS === category) {
             setFilterParams((prevState) => {
-                const filter = { ...prevState, brands: [...checkedValues] };
+                const filter = { ...prevState, clothers: [...checkedValues] };
                 dispatch(fetchClothesByFilterParams({ ...filter, sortByPrice, currentPage: 0 }));
                 return filter;
             });
@@ -119,21 +123,21 @@ const Clohtes = () => {
                 <Typography.Title level={2}>Clothes</Typography.Title>
                 <Row gutter={32}>
                     <Col span={6}>
-                        <ClothesCheckbox
+                        <MenuCheckboxSection
                             title={"Brand"}
                             onChange={onChangeCheckbox}
-                            data={brands}
-                            category={CheckboxCategoryFilter.BRANDS}
-                            selectedValues={filterParams.BRANDS}
+                            data={clother}
+                            category={CheckboxCategoryFilter.CLOTHERS}
+                            selectedValues={filterParams.clothers}
                         />
-                        <ClothesCheckbox
+                        <MenuCheckboxSection
                             title={"Gender"}
                             onChange={onChangeCheckbox}
                             data={gender}
                             category={CheckboxCategoryFilter.GENDERS}
                             selectedValues={filterParams.genders}
                         />
-                        <ClothesRadio title={"Price"} onChange={onChangeRadio} data={price} />
+                        <MenuRadioSection title={"Price"} onChange={onChangeRadio} data={price} />
                     </Col>
                     <Col span={18}>
                         <Row>
@@ -146,7 +150,7 @@ const Clohtes = () => {
                         </Row>
                         <Row style={{ marginTop: 16, marginBottom: 16 }}>
                             <Col span={8} style={{ marginRight: "auto"}}>
-                                <ClothesSorter onChange={handleChangeSortPrice} sortByPrice={sortByPrice} />
+                                <MenuSorter onChange={handleChangeSortPrice} sortByPrice={sortByPrice} />
                             </Col>
                             <Col span={12}>
                                 <Pagination
@@ -159,13 +163,22 @@ const Clohtes = () => {
                             </Col>
                         </Row>
                         <Row gutter={[32, 32]}>
-                            {isClohtesLoading ? (
-                                <Loader />
+                            {isClothesLoading ? (
+                                <Spinner />
                             ) : (
-                                clohtes.map((clothe) => (
-                                    <ClothesCard key={clothe.id} clohtes={clothe} colSpan={8} />
+                                clothes.map((cloth) => (
+                                    <ClothCard key={cloth.id} cloth={cloth} colSpan={8} />
                                 ))
                             )}
+                        </Row>
+                        <Row style={{ marginTop: 16, marginBottom: 16, display: "flex", justifyContent: "center" }}>
+                            <Pagination
+                                current={currentPage}
+                                pageSize={MAX_PAGE_VALUE}
+                                total={totalElements}
+                                showSizeChanger={false}
+                                onChange={changePagination}
+                            />
                         </Row>
                     </Col>
                 </Row>
@@ -174,4 +187,4 @@ const Clohtes = () => {
     );
 };
 
-export default Clohtes;
+export default Menu;
