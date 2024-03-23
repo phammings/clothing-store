@@ -11,7 +11,7 @@ import { resetAdminState } from "../../../../state-redux/admin/admin-slice";
 import ContentTitle from "../../../ContentTitle/ContentTitle";
 import SelectSearchData from "../../../SelectSearchData/SelectSearchData";
 import InputSearch from "../../../InputSearch/InputSearch";
-import ClothCard from "../../../ClothCard/ClothesCard";
+import ClothCard from "../../../ClothCard/ClothCard";
 import { deleteCloth } from "../../../../state-redux/admin/admin-thunks";
 import { LoadingStatus } from "../../../../constants/types/types";
 import DeleteModal from "./DeleteModal/DeleteModal";
