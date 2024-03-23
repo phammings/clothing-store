@@ -4,20 +4,20 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Button, Col, Row, Typography } from "antd";
 import { Link } from "react-router-dom";
 
-import ContentTitle from "../../components/ContentTitle/ContentTitle";
-import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
-import { selectCartItems, selectIsCartLoading } from "../../redux-toolkit/cart/cart-selector";
-import { fetchCart } from "../../redux-toolkit/cart/cart-thunks";
+import ContentTitle from "../../ContentTitle/ContentTitle";
+import ContentWrapper from "../../ContentWrapper/ContentWrapper";
+import { selectCartItems, selectIsCartLoading } from "../../../state-redux/cart/cart-selector";
+import { fetchCart } from "../../../state-redux/cart/cart-thunks";
 import {
     calculateCartPrice,
     removeClothById,
     resetCartState,
     setCartItemsCount
-} from "../../redux-toolkit/cart/cart-slice";
+} from "../../../state-redux/cart/cart-slice";
 import CartItem from "./CartItem/CartItem";
-import Spinner from "../../components/Spinner/Spinner";
+import Spinner from "../../Spinner/Spinner";
 import CartTotalPrice from "./CartTotalPrice";
-import { ORDER } from "../../constants/routeConstants";
+import { ORDER } from "../../../constants/routeConstants";
 import "./Cart.css";
 
 const Cart = () => {
