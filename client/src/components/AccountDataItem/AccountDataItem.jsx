@@ -1,13 +1,16 @@
 import React from "react";
+import { Col, Row, Typography } from "antd";
 
 const AccountDataItem = ({ title, text }) => {
   return (
-    <div style={{ marginBottom: 8 }}>
-      <div style={{ display: "inline-block", width: "30%" }}>
-        <strong>{title}</strong>
-      </div>
-      <div style={{ display: "inline-block", width: "70%" }}>{text}</div>
-    </div>
+    <Row style={{ marginBottom: 8 }}>
+      <Col span={8}>
+        <Typography.Text strong>{title}</Typography.Text>
+      </Col>
+      <Col span={12}>
+        <Typography.Text>{text}</Typography.Text>
+      </Col>
+    </Row>
   );
 };
 
