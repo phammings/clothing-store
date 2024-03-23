@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import RequestService from "../../utils/request-service";
+import RequestService from "../../security/request-service";
 import {
     CLOTHES,
     CLOTHES_GRAPHQL_IDS,
@@ -9,7 +9,7 @@ import {
     CLOTH_SEARCH,
     CLOTH_SEARCH_TEXT
 } from "../../constants/urlConstants";
-import { geClothesByIdsQuery, getAllClothesByQuery } from "../../utils/graphql-query/cloth-query";
+import { geClothesByIdsQuery, getAllClothesByQuery } from "../../security/graphql-query/cloth-query";
 
 export const fetchClothes = createAsyncThunk(
     "clothes/fetchClothes",
