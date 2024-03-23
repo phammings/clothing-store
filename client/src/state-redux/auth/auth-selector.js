@@ -1,5 +1,5 @@
 import { RootState } from "../../store";
-import { LoadingStatus } from "../../types/types";
+import { LoadingStatus } from "../../constants/types/types";
 
 export const selectAuthState = (state) => state.auth;
 export const selectUserAuthEmail = (state) => selectAuthState(state).email;
