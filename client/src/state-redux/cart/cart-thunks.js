@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import RequestService from "../../utils/request-service";
+import RequestService from "../../security/request-service";
 import { USERS_CART } from "../../constants/urlConstants";
 
 export const fetchCart = createAsyncThunk("cart/fetchCart", async (clothIds) => {

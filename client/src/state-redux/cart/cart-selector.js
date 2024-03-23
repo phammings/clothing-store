@@ -1,4 +1,4 @@
-import { LoadingStatus } from "../../types/types";
+import { LoadingStatus } from "../../constants/types/types";
 
 export const selectCartState = (state) => state.cart;
 export const selectTotalPrice = (state) => selectCartState(state).totalPrice;
