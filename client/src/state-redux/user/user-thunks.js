@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import RequestService from "../../utils/request-service";
+import RequestService from "../../security/request-service";
 import { AUTH_EDIT_PASSWORD, REVIEW, USERS, USERS_GRAPHQL } from "../../constants/urlConstants";
-import { userByQuery } from "../../utils/graphql-query/users-query";
+import { userByQuery } from "../../security/graphql-query/users-query";
 
 export const fetchUserInfo = createAsyncThunk("user/fetchUserInfo", async () => {
     const response = await RequestService.get(USERS, true);
