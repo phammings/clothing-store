@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, ReactElement, useEffect, useState } from "react";
 import { Alert, Col, Divider, Form, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import ReCAPTCHA from "react-google-recaptcha";
 import { LockOutlined, MailOutlined, UserAddOutlined, UserOutlined } from "@ant-design/icons";
 
-import { selectErrors, selectIsAuthLoading, selectIsRegistered } from "../../redux-toolkit/auth/auth-selector";
-import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
-import ContentTitle from "../../components/ContentTitle/ContentTitle";
-import { registration } from "../../redux-toolkit/auth/auth-thunks";
-import FormInput from "../../components/FormInput/FormInput";
-import IconButton from "../../components/IconButton/IconButton";
-import { resetAuthState, setAuthLoadingState } from "../../redux-toolkit/auth/auth-slice";
-import { LoadingStatus } from "../../types/types";
+import { selectErrors, selectIsAuthLoading, selectIsRegistered } from "../../../state-redux/auth/auth-selector";
+import ContentWrapper from "../../ContentWrapper/ContentWrapper";
+import ContentTitle from "../../ContentTitle/ContentTitle";
+import { registration } from "../../../state-redux/auth/auth-thunks";
+import FormInput from "../../FormInput/FormInput";
+import IconButton from "../../IconButton/IconButton";
+import { resetAuthState, setAuthLoadingState } from "../../../state-redux/auth/auth-slice";
+import { LoadingStatus, UserRegistration } from "../../../constants/types/types";
 
 const Registration = () => {
     const dispatch = useDispatch();
@@ -40,6 +40,7 @@ const Registration = () => {
 
     const onClickSignIn = (userData) => {
         dispatch(registration({ ...userData, captcha: captchaValue }));
+        // @ts-ignore
         window.grecaptcha.reset();
     };
 

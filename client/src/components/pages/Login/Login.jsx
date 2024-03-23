@@ -4,15 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Alert, Col, Divider, Form, Row, Space } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 
-import { selectErrorMessage } from "../../redux-toolkit/auth/auth-selector";
-import { resetAuthState } from "../../redux-toolkit/auth/auth-slice";
-import { activateAccount, login } from "../../redux-toolkit/auth/auth-thunks";
-import { selectSuccessMessage } from "../../redux-toolkit/user/user-selector";
-import { FORGOT } from "../../constants/routeConstants";
-import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
-import ContentTitle from "../../components/ContentTitle/ContentTitle";
-import FormInput from "../../components/FormInput/FormInput";
-import IconButton from "../../components/IconButton/IconButton";
+import { selectErrorMessage } from "../../../state-redux/auth/auth-selector";
+import { resetAuthState } from "../../../state-redux/auth/auth-slice";
+import { activateAccount, login } from "../../../state-redux/auth/auth-thunks";
+import { selectSuccessMessage } from "../../../state-redux/user/user-selector";
+import { FORGOT } from "../../../constants/routeConstants";
+import ContentWrapper from "../../ContentWrapper/ContentWrapper";
+import ContentTitle from "../../ContentTitle/ContentTitle";
+import FormInput from "../../FormInput/FormInput";
+import IconButton from "../../IconButton/IconButton";
 import "./Login.css";
 
 const Login = () => {
