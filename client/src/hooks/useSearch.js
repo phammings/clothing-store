@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Form } from "antd";
 
-import { fetchClothesByInputText } from "../redux-toolkit/clothes/clothes-thunks";
+import { fetchClothesByInputText } from "../state-redux/clothes/clothes-thunks";
 
 export const useSearch = () => {
     const dispatch = useDispatch();
