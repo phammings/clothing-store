@@ -1,0 +1,30 @@
+.footer-wrapper {
+  padding: 40px 250px;
+  height: 150px;
+  background-color: #000000;
+}
+
+.footer-wrapper .ant-typography {
+  color: #ffffff;
+}
+
+.footer-wrapper a {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.footer-wrapper .footer-wrapper-social {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer-wrapper .footer-wrapper-social a {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.footer-wrapper .footer-wrapper-copyright {
+  text-align: center;
+  display: block;
+  margin-top: 30px;
+}

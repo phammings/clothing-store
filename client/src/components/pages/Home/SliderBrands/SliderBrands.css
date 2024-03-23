@@ -1,0 +1,48 @@
+@media (max-width: 5000px) {
+    .brands-carousel {
+        margin: 0 150px;
+    }
+}
+
+@media (max-width: 992px) {
+    .brands-carousel {
+        margin: 0 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .brands-carousel {
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .brands-carousel {
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .brands-wrapper {
+        margin-top: 16px;
+    }
+}
+
+.brands-carousel {
+    text-align: center;
+    margin-top: 32px;
+}
+
+.brands-wrapper .ant-carousel .slick-dots li button {
+    background: #000000;
+    opacity: 0.4;
+}
+
+.brands-wrapper .ant-carousel .slick-dots li.slick-active button {
+    opacity: 1;
+    background: #000000;
+}
+
+.brands-wrapper .ant-carousel .slick-dots-bottom {
+    bottom: -10px;
+}

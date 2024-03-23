@@ -1,0 +1,26 @@
+.cloth-card .ant-card-cover {
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.cloth-card-image {
+    margin-top: 24px;
+}
+
+.cloth-card-rate {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cloth-card-price {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+.cloth-card-price, .ant-rate-star:not(:last-child) {
+    margin-right: 2px;
+}
