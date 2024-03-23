@@ -2,7 +2,7 @@ import React from "react";
 import { Typography } from "antd";
 import { useSelector } from "react-redux";
 
-import { selectTotalPrice } from "../../redux-toolkit/cart/cart-selector";
+import { selectTotalPrice } from "../../../state-redux/cart/cart-selector";
 
 const CartTotalPrice = () => {
     const totalPrice = useSelector(selectTotalPrice);
