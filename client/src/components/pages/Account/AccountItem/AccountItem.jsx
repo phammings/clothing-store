@@ -1,9 +1,9 @@
-import React from "react";
+import React, { FC, ReactElement } from "react";
 import { useSelector } from "react-redux";
 import { Typography } from "antd";
 
-import { selectIsUserLoading, selectUserFromUserState } from "../../../state-redux/user/user-selector";
-import Spinner from "../../../components/Spinner/Spinner";
+import { selectIsUserLoading, selectUserFromUserState } from "../../../../state-redux/user/user-selector";
+import Spinner from "../../../Spinner/Spinner";
 
 const AccountItem = () => {
     const usersData = useSelector(selectUserFromUserState);
