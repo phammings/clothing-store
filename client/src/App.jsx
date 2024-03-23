@@ -12,7 +12,6 @@ import {
     FORGOT,
     LOGIN,
     MENU,
-    OAUTH2_REDIRECT,
     ORDER,
     ORDER_FINALIZE,
     PRODUCT,
