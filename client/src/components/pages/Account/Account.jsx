@@ -4,12 +4,12 @@ import { Redirect, Route } from "react-router-dom";
 import { Col, Row } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 
-import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
-import { selectUserFromUserState } from "../../redux-toolkit/user/user-selector";
-import { resetAuthState } from "../../redux-toolkit/auth/auth-slice";
-import { fetchUserInfo } from "../../redux-toolkit/user/user-thunks";
-import { UserRoles } from "../../types/types";
-import ContentTitle from "../../components/ContentTitle/ContentTitle";
+import ContentWrapper from "../../ContentWrapper/ContentWrapper";
+import { selectUserFromUserState } from "../../../state-redux/user/user-selector";
+import { resetAuthState } from "../../../state-redux/auth/auth-slice";
+import { fetchUserInfo } from "../../../state-redux/user/user-thunks";
+import { UserRoles } from "../../../constants/types/types";
+import ContentTitle from "../../ContentTitle/ContentTitle";
 import {
     ACCOUNT,
     ACCOUNT_ADMIN_ADD,
@@ -19,7 +19,7 @@ import {
     ACCOUNT_USER_EDIT,
     ACCOUNT_USER_INFO,
     ACCOUNT_USER_ORDERS
-} from "../../constants/routeConstants";
+} from "../../../constants/routeConstants";
 import AccountLink from "./AccountLink/AccountLink";
 import AccountItem from "./AccountItem/AccountItem";
 import PersonalData from "./PersonalData/PersonalData";
