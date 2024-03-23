@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { setUser } from "../user/user-slice";
 
-import RequestService from "../../utils/request-service";
+import RequestService from "../../security/request-service";
 import {
     AUTH_FORGOT,
     AUTH_LOGIN,

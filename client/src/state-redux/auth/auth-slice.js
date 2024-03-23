@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { LoadingStatus } from "../../types/types";
+import { LoadingStatus } from "../../constants/types/types";
 import {
     activateAccount,
     fetchResetPasswordCode,
