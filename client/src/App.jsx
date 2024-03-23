@@ -32,7 +32,7 @@ import Product from "./components/pages/Product/Product";
 import ResetPassword from "./components/pages/ResetPassword/ResetPassword";
 import Account from "./components/pages/Account/Account";
 import OrderFinalize from "./components/pages/OrderFinalize/OrderFinalize";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
 
@@ -65,7 +65,6 @@ const App = () => {
                 <Route exact path={CART} component={Cart} />
                 <Route exact path={ORDER} component={Order} />
                 <Route exact path={ORDER_FINALIZE} component={OrderFinalize} />
-                <Route path={OAUTH2_REDIRECT} component={OAuth2RedirectHandler} />
                 <Route
                     path={ACCOUNT}
                     render={() =>
