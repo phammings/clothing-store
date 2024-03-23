@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Typography } from "antd";
 
-import { selectIsUserLoading, selectUserFromUserState } from "../../../redux-toolkit/user/user-selector";
+import { selectIsUserLoading, selectUserFromUserState } from "../../../state-redux/user/user-selector";
 import Spinner from "../../../components/Spinner/Spinner";
 
 const AccountItem = () => {
