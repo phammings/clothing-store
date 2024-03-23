@@ -1,4 +1,4 @@
-import {  LoadingStatus } from "../../types/types";
+import {  LoadingStatus } from "../../constants/types/types";
 
 export const selectClothState = (state) => state.cloth;
 export const selectCloth = (state) => state.cloth.cloth;

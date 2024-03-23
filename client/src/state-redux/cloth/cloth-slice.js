@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { LoadingStatus } from "../../types/types";
+import { LoadingStatus } from "../../constants/types/types";
 import { fetchCloth, fetchClothByQuery, fetchReviewsByClothId } from "./cloth-thunks";
 
 export const initialState = {
