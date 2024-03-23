@@ -7,14 +7,14 @@ import {
     selectErrorMessage,
     selectIsAuthLoading,
     selectSuccessMessage
-} from "../../redux-toolkit/auth/auth-selector";
-import { setAuthLoadingState } from "../../redux-toolkit/auth/auth-slice";
-import { LoadingStatus } from "../../types/types";
-import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
-import ContentTitle from "../../components/ContentTitle/ContentTitle";
-import FormInput from "../../components/FormInput/FormInput";
-import IconButton from "../../components/IconButton/IconButton";
-import { forgotPassword } from "../../redux-toolkit/auth/auth-thunks";
+} from "../../../state-redux/auth/auth-selector";
+import { setAuthLoadingState } from "../../../state-redux/auth/auth-slice";
+import { LoadingStatus } from "../../../constants/types/types";
+import ContentWrapper from "../../ContentWrapper/ContentWrapper";
+import ContentTitle from "../../ContentTitle/ContentTitle";
+import FormInput from "../../FormInput/FormInput";
+import IconButton from "../../IconButton/IconButton";
+import { forgotPassword } from "../../../state-redux/auth/auth-thunks";
 
 const ForgotPassword = () => {
     const dispatch = useDispatch();
