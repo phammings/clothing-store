@@ -10,7 +10,6 @@ export const CONTACTS = "/contacts";
 export const CART = "/cart";
 export const ORDER = "/order";
 export const ORDER_FINALIZE = "/order/finalize";
-export const OAUTH2_REDIRECT = "/oauth2/redirect";
 export const ACCOUNT_ADMIN_ADD = "/account/admin/add";
 export const ACCOUNT_ADMIN_CLOTHES = "/account/admin/clothes";
 export const ACCOUNT_ADMIN_ORDERS = "/account/admin/orders";
