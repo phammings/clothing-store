@@ -9,7 +9,7 @@ import { fetchClothesByFilterParams, fetchClothesByInputText } from "../../../st
 import { resetClothesState } from "../../../state-redux/clothes/clothes-slice";
 import MenuRadioSection from "./MenuSection/MenuRadioSection";
 import MenuSorter from "./MenuSorter/MenuSorter";
-import ClothCard from "../../ClothCard/ClothesCard";
+import ClothCard from "../../ClothCard/ClothCard";
 import SelectSearchData from "../../SelectSearchData/SelectSearchData";
 import InputSearch from "../../InputSearch/InputSearch";
 import Spinner from "../../Spinner/Spinner";
