@@ -1,6 +1,6 @@
 .login-content {
-    margin: 65px 401px;
-    min-height: 551px;
-    padding: 50px;
     background-color: #ffffff;
+    padding: 50px;
+    margin: 64px 400px;
+    min-height: 550px;
 }

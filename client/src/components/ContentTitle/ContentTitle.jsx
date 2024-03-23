@@ -1,13 +1,14 @@
 import React from "react";
+import { Space, Typography } from "antd";
 
 import "./ContentTitle.css";
 
 const ContentTitle = ({ icon, title, titleLevel }) => {
   return (
-    <div className="icon">
+    <Space align="center" className="title-icon">
       {icon}
-      <h level={titleLevel} className="title">{title}</h>
-    </div>
+      <Typography.Title level={titleLevel}>{title}</Typography.Title>
+    </Space>
   );
 };
 

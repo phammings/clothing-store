@@ -1,12 +1,13 @@
 import React from "react";
+import { Layout } from "antd";
 
 import "./ContentWrapper.css";
 
 const ContentWrapper = ({ children }) => {
     return (
-        <div>
-            <div className={"login-content"}>{children}</div>
-        </div>
+        <Layout>
+            <Layout.Content className={"login-content"}>{children}</Layout.Content>
+        </Layout>
     );
 };
 
