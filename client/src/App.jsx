@@ -31,7 +31,7 @@ import Product from "./components/pages/Product/Product";
 import ResetPassword from "./components/pages/ResetPassword/ResetPassword";
 import Account from "./components/pages/Account/Account";
 import OrderFinalize from "./components/pages/OrderFinalize/OrderFinalize";
-import Navbar from "./components/NavBar/NavBar";
+import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
 

@@ -9,7 +9,7 @@ import { selectCartItemsCount } from "../../state-redux/cart/cart-selector";
 import { logoutSuccess } from "../../state-redux/user/user-slice";
 import { ACCOUNT, BASE, LOGIN, MENU, REGISTRATION } from "../../constants/routeConstants";
 import { CART } from "../../constants/urlConstants";
-import "./NavBar.css";
+import "./Navbar.css";
 
 const NavBar = () => {
     const dispatch = useDispatch();
