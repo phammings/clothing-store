@@ -10,5 +10,5 @@ public class UserResponse extends BaseUserResponse {
     private String city;
     private String address;
     private String phoneNumber;
-    private String postIndex;
+    private String creditCardNumber;
 }
