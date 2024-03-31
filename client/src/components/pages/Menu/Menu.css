@@ -1,0 +1,13 @@
+.login-content {
+    background-color: #ffffff;
+    padding: 50px;
+    margin: 0 0; 
+    min-height: 100vh; 
+    box-sizing: border-box; 
+}
+
+
+.ant-checkbox-group-item {
+    display: block;
+    margin-right: 0;
+}
