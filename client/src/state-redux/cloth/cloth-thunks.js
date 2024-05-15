@@ -9,6 +9,7 @@ export const fetchCloth = createAsyncThunk(
     async (clothId, thunkApi) => {
         try {
             const response = await RequestService.get(`${CLOTHES}/${clothId}`);
+           
             return response.data;
         } catch (error) {
             return thunkApi.rejectWithValue(error.response.data);

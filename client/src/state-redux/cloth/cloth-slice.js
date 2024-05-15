@@ -24,6 +24,7 @@ export const ClothSlice = createSlice({
         },
         resetClothState: () => initialState
     },
+    
     extraReducers: (builder) => {
         builder.addCase(fetchCloth.pending, (state) => {
             state.loadingState = LoadingStatus.LOADING;
