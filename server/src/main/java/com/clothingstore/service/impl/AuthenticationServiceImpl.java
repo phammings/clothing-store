@@ -1,15 +1,15 @@
 package com.clothingstore.service.impl;
 
-import com.clothingstore.entity.User;
-import com.clothingstore.dto.CaptchaResponse;
+import com.clothingstore.configurations.security.JwtProvider;
 import com.clothingstore.consts.enums.AuthProvider;
 import com.clothingstore.consts.enums.Role;
+import com.clothingstore.dto.CaptchaResponse;
+import com.clothingstore.entity.User;
 import com.clothingstore.exception.ApiRequestException;
 import com.clothingstore.exception.EmailException;
 import com.clothingstore.exception.PasswordConfirmationException;
 import com.clothingstore.exception.PasswordException;
 import com.clothingstore.repo.UserRepository;
-import com.clothingstore.configurations.security.JwtProvider;
 import com.clothingstore.service.AuthenticationService;
 import com.clothingstore.service.email.MailSender;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +33,7 @@ import static com.clothingstore.consts.ErrorMessage.*;
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-    //    private final AuthenticationManager authenticationManager;
+//    private final AuthenticationManager authenticationManager;
     private final RestTemplate restTemplate;
     private final JwtProvider jwtProvider;
     private final MailSender mailSender;
