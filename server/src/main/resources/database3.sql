@@ -11,7 +11,7 @@ create table orders
     first_name   varchar(255),
     last_name    varchar(255),
     phone_number varchar(255),
-    credit_card   int4,
+    credit_card  varchar(255),
     total_price  float8,
     primary key (id)
 );
