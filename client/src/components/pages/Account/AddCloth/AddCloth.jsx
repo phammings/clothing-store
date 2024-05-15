@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Col, Form, notification, Row, Upload } from "antd";
+import { Button, Col, Form, notification, Row, Upload, Select, Input } from "antd";
 import { PlusSquareFilled, PlusSquareOutlined, UploadOutlined } from "@ant-design/icons";
 
 import {
@@ -12,9 +12,9 @@ import { resetAdminState, setAdminLoadingState } from "../../../../state-redux/a
 import { LoadingStatus } from "../../../../constants/types/types";
 import { addCloth } from "../../../../state-redux/admin/admin-thunks";
 import ContentTitle from "../../../ContentTitle/ContentTitle";
-import AddFormInput from "./AddFormInput";
-import AddFormSelect from "./AddFormSelect";
 import IconButton from "../../../IconButton/IconButton";
+
+const { Option } = Select;
 
 const AddCloth = () => {
     const dispatch = useDispatch();
@@ -22,7 +22,8 @@ const AddCloth = () => {
     const ispClothLoading = useSelector(selectIsAdminStateLoading);
     const errors = useSelector(selectAdminStateErrors);
     const [file, setFile] = useState(null);
-    const [gender, setGender] = useState(""); // Define gender state
+    const [gender, setGender] = useState("");
+    const [brand, setBrand] = useState("");
 
     useEffect(() => {
         dispatch(setAdminLoadingState(LoadingStatus.LOADED));
@@ -44,37 +45,58 @@ const AddCloth = () => {
     }, [isClothAdded]);
 
     const onFormSubmit = (data) => {
-    
         const bodyFormData = new FormData();
-    
+
         if (file) {
-            console.log(file)
-            bodyFormData.append("file", file); // Append the file to FormData
+            bodyFormData.append("file", file);
         }
-        
-        // Construct cloth object
+
         const clothData = {
             ...data,
             gender,
+            brand,
             clothRating: 0
         };
 
-        // Append cloth data as a blob
         bodyFormData.append("cloth", new Blob([JSON.stringify(clothData)], { type: "application/json" }));
-
+        console.log(clothData)
         dispatch(addCloth(bodyFormData));
     };
-
+    
     const handleUpload = (info) => {
         if (info.file) {
-            console.log('file handler called')
-            console.log(info)
-            setFile(info.file); // Set file state
+            setFile(info.file);
+            console.log(info.file)
         }
     };
+
     const onGenderChange = (value) => {
-        setGender(value); // Update gender state when gender is selected
+        setGender(value);
     };
+
+    const onBrandChange = (value) => {
+        setBrand(value);
+    };
+
+    const sampleBrands = [
+    "Burberry",
+    "Bvlgari",
+    "Calvin Klein",
+    "Carolina Herrera",
+    "Chanel",
+    "Creed",
+    "Dior",
+    "Dolce&Gabbana",
+    "Giorgio Armani",
+    "Gucci",
+    "Hermes",
+    "Hugo Boss",
+    "Jean Paul Gaultier",
+    "Lancome",
+    "Paco Rabanne",
+    "Prada",
+    "Tom Ford",
+    "Versace"];
 
     return (
         <>
@@ -82,94 +104,151 @@ const AddCloth = () => {
             <Form onFinish={onFormSubmit}>
                 <Row gutter={32}>
                     <Col span={12}>
-                        <AddFormInput
-                            title={"Title"}
-                            name={"title"}
-                            error={errors.clothTitleError}
-                            placeholder={"Enter the cloth title"}
-                            disabled={ispClothLoading}
-                        />
-                        <AddFormInput
-                            title={"Type"}
-                            name={"type"}
-                            error={errors.typeError}
-                            placeholder={"Enter the cloth type"}
-                            disabled={ispClothLoading}
-                        />
-                        <AddFormSelect
-                            title={"Gender"}
-                            name={"gender"}
-                            error={errors.clothGenderError}
-                            placeholder={"Select gender"}
-                            disabled={ispClothLoading}
-                            values={["male", "female"]}
-                            onChange={onGenderChange} // Pass onGenderChange function to handle gender change
-                        />
-                        <AddFormInput
-                            title={"Color"}
-                            name={"color"}
-                            error={errors.colorError}
-                            placeholder={"Enter the cloth color"}
-                            disabled={ispClothLoading}
-                        />
-                        <AddFormInput
-                            title={"Size"}
-                            name={"size"}
-                            error={errors.sizeError}
-                            placeholder={"Enter the cloth size"}
-                            disabled={ispClothLoading}
-                        />
-                        <AddFormInput
-                            title={"Heart notes"}
-                            name={"middleNotes"}
-                            error={errors.middleNotesError}
-                            placeholder={"Enter the heart notes"}
-                            disabled={ispClothLoading}
-                        />
-                        <AddFormInput
-                            title={"Price"}
-                            name={"price"}
-                            error={errors.priceError}
-                            placeholder={"Enter the price"}
-                            disabled={ispClothLoading}
-                        />
+                        <Form.Item
+                            name="title"
+                            label="Title"
+                            rules={[{ required: true, message: "Please enter the cloth title" }]}
+                        >
+                            <Input
+                                placeholder="Enter the cloth title"
+                                disabled={ispClothLoading}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name="type"
+                            label="Type"
+                            rules={[{ required: true, message: "Please select the cloth type" }]}
+                        >
+                            <Select
+                                placeholder="Select the cloth type"
+                                disabled={ispClothLoading}
+                            >
+                                <Select.Option value="shirt">Shirt</Select.Option>
+                                <Select.Option value="pants">Pants</Select.Option>
+                            </Select>
+                        </Form.Item>
+
+                        <Form.Item
+                            name="gender"
+                            label="Gender"
+                            rules={[{ required: true, message: "Please select a gender" }]}
+                        >
+                            <Select
+                                placeholder="Select gender"
+                                onChange={onGenderChange}
+                                allowClear
+                            >
+                                <Option value="male">Male</Option>
+                                <Option value="female">Female</Option>
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            name="color"
+                            label="Color"
+                            rules={[{ required: true, message: "Please enter the cloth color" }]}
+                        >
+                            <Input
+                                placeholder="Enter the cloth color"
+                                disabled={ispClothLoading}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name="size"
+                            label="Size (Only S, M, or L allowed)"
+                            rules={[
+                                { 
+                                    required: true, 
+                                    message: "Please enter the cloth size" 
+                                },
+                                {
+                                    pattern: /^(S|M|L)$/i,
+                                    message: "Only S, M, or L sizes are allowed"
+                                }
+                            ]}
+                        >
+                            <Input
+                                placeholder="Enter the cloth size (S, M, or L)"
+                                disabled={ispClothLoading}
+                            />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="middleNote"
+                            label="Heart notes"
+                            rules={[{ required: true, message: "Please enter the heart notes" }]}
+                        >
+                            <Input
+                                placeholder="Enter the heart notes"
+                                disabled={ispClothLoading}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name="price"
+                            label="Price"
+                            rules={[{ required: true, message: "Please enter the price" }]}
+                        >
+                            <Input
+                                placeholder="Enter the price"
+                                disabled={ispClothLoading}
+                            />
+                        </Form.Item>
                     </Col>
                     <Col span={12}>
-                        <AddFormInput
-                            title={"Brand"}
-                            name={"brand"}
-                            error={errors.brandError}
-                            placeholder={"Enter the brand"}
-                            disabled={ispClothLoading}
-                        />
-                        <AddFormInput
-                            title={"Manufacturer country"}
-                            name={"country"}
-                            error={errors.countryError}
-                            placeholder={"Enter the manufacturer country"}
-                            disabled={ispClothLoading}
-                        />
-                        <AddFormInput
-                            title={"Top notes"}
-                            name={"topNotes"}
-                            error={errors.topNotesError}
-                            placeholder={"Enter the top notes"}
-                            disabled={ispClothLoading}
-                        />
-                        <AddFormInput
-                            title={"Base notes"}
-                            name={"baseNotes"}
-                            error={errors.baseNotesError}
-                            placeholder={"Enter the base notes"}
-                            disabled={ispClothLoading}
-                        />
-                        <AddFormInput
-                            title={"Description"}
-                            name={"description"}
-                            error={errors.descriptionError}
-                            placeholder={"Enter the description"}
-                            disabled={ispClothLoading}
-                        />
+                        <Form.Item
+                            name="brand"
+                            label="Brand"
+                            rules={[{ required: true, message: "Please select a brand" }]}
+                        >
+                            <Select
+                                placeholder="Select a brand"
+                                onChange={onBrandChange}
+                                allowClear
+                            >
+                                {sampleBrands.map((brand) => (
+                                    <Option key={brand} value={brand}>{brand}</Option>
+                                ))}
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            name="country"
+                            label="Manufacturer country"
+                            rules={[{ required: true, message: "Please enter the manufacturer country" }]}
+                        >
+                            <Input
+                                placeholder="Enter the manufacturer country"
+                                disabled={ispClothLoading}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name="topNote"
+                            label="Top notes"
+                            rules={[{ required: true, message: "Please enter the top notes" }]}
+                        >
+                            <Input
+                                placeholder="Enter the top notes"
+                                disabled={ispClothLoading}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name="baseNote"
+                            label="Base notes"
+                            rules={[{ required: true, message: "Please enter the base notes" }]}
+                        >
+                            <Input
+                                placeholder="Enter the base notes"
+                                disabled={ispClothLoading}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            name="description"
+                            label="Description"
+                            rules={[{ required: true, message: "Please enter the description" }]}
+                        >
+                            <Input.TextArea
+                                placeholder="Enter the description"
+                                disabled={ispClothLoading}
+                            />
+                        </Form.Item>
                         <Upload name="file" onChange={handleUpload} beforeUpload={() => false}>
                             <Button icon={<UploadOutlined />} style={{ marginTop: 22 }}>
                                 Click to Upload

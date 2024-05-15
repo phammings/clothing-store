@@ -1,4 +1,5 @@
-import React, { FC, ReactElement, useEffect, useState } from "react";
+// ClothList.jsx
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UnorderedListOutlined } from "@ant-design/icons";
 import { Col, notification, Pagination, Row } from "antd";
@@ -29,7 +30,7 @@ const ClothList = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const { currentPage, totalElements, handleChangePagination } = usePagination();
     const { searchValue, searchTypeValue, onSearch, handleChangeSelect } = useSearch();
-
+    const [deleteClothError, setDeleteClothError] = useState(false);
     useEffect(() => {
         dispatch(fetchClothes(0));
 
@@ -46,6 +47,8 @@ const ClothList = () => {
                 message: "Cloth deleted",
                 description: "Cloth successfully deleted!"
             });
+            // Remove the deleted cloth from the list
+            setClothInfo(null);
         }
     }, [isClothDeleted]);
 
@@ -67,6 +70,7 @@ const ClothList = () => {
 
     const deleteClothHandler = () => {
         dispatch(deleteCloth(clothInfo.id));
+        setIsModalVisible(false); // Close the delete modal after deleting the cloth
     };
 
     const handleCancel = () => {
@@ -107,7 +111,7 @@ const ClothList = () => {
                                         key={cloth.id}
                                         cloth={cloth}
                                         colSpan={8}
-                                        onOpenDelete={showDeleteModalWindow}
+                                        onDelete={() => showDeleteModalWindow(cloth)} // Pass a function to open the delete modal
                                         edit
                                     />
                                 ))}
