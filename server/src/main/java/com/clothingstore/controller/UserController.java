@@ -1,11 +1,11 @@
 package com.clothingstore.controller;
 
-import com.clothingstore.configurations.security.UserPrincipal;
 import com.clothingstore.consts.PathConstants;
 import com.clothingstore.dto.cloth.ClothResponse;
-import com.clothingstore.dto.mapper.UserMapper;
 import com.clothingstore.dto.user.UpdateUserRequest;
 import com.clothingstore.dto.user.UserResponse;
+import com.clothingstore.dto.mapper.UserMapper;
+import com.clothingstore.configurations.security.UserPrincipal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

@@ -3,12 +3,12 @@ package com.clothingstore.controller;
 import com.clothingstore.dto.HeaderResponse;
 import com.clothingstore.dto.cloth.ClothRequest;
 import com.clothingstore.dto.cloth.FullClothResponse;
-import com.clothingstore.dto.mapper.ClothMapper;
-import com.clothingstore.dto.mapper.OrderMapper;
-import com.clothingstore.dto.mapper.UserMapper;
 import com.clothingstore.dto.order.OrderResponse;
 import com.clothingstore.dto.user.BaseUserResponse;
 import com.clothingstore.dto.user.UserResponse;
+import com.clothingstore.dto.mapper.ClothMapper;
+import com.clothingstore.dto.mapper.OrderMapper;
+import com.clothingstore.dto.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +41,7 @@ public class AdminController {
     @PostMapping(ADD_CLOTH)
     public ResponseEntity<FullClothResponse> addCloth(@RequestPart(name = "file", required = true) MultipartFile file,
                                                       @RequestPart("cloth") @Valid ClothRequest clothRequest,
-                                                      BindingResult bindingResult) throws Exception {
+                                                      BindingResult bindingResult) {
 
 
         System.out.println(clothRequest);
