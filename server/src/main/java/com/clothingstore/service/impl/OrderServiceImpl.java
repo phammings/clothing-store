@@ -16,10 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.clothingstore.consts.ErrorMessage.ORDER_NOT_FOUND;
 
@@ -57,26 +54,36 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public Order postOrder(Order order, Map<Long, Long> clothsId) {
         List<OrderItem> orderItemList = new ArrayList<>();
-
+        System.out.println(clothsId);
+        System.out.println(order);
         for (Map.Entry<Long, Long> entry : clothsId.entrySet()) {
-            Cloth cloth = clothRepository.findById(entry.getKey()).get();
-            OrderItem orderItem = new OrderItem();
-            orderItem.setCloth(cloth);
-            orderItem.setAmount((cloth.getPrice() * entry.getValue()));
-            orderItem.setQuantity(entry.getValue());
-            orderItemList.add(orderItem);
-            orderItemRepository.save(orderItem);
+            Optional<Cloth> clothOptional = clothRepository.findById(entry.getKey());
+            if (clothOptional.isPresent()) {
+                Cloth cloth = clothOptional.get();
+                OrderItem orderItem = new OrderItem();
+                orderItem.setCloth(cloth);
+                orderItem.setAmount((cloth.getPrice() * entry.getValue()));
+                orderItem.setQuantity(entry.getValue());
+                orderItemList.add(orderItem);
+                orderItemRepository.save(orderItem);
+            } else {
+                throw new ApiRequestException("Cloth not found for id: " + entry.getKey(), HttpStatus.NOT_FOUND);
+            }
         }
+
         order.getOrderItems().addAll(orderItemList);
         orderRepository.save(order);
 
         String subject = "Order #" + order.getId();
+        System.out.println("order"+subject);
         String template = "order-template";
         Map<String, Object> attributes = new HashMap<>();
         attributes.put("order", order);
         mailSender.sendMessageHtml(order.getEmail(), subject, template, attributes);
+
         return order;
     }
+
 
     @Override
     @Transactional
