@@ -1,9 +1,10 @@
 package com.clothingstore.service;
 
-import com.clothingstore.consts.enums.SearchCloth;
-import com.clothingstore.dto.cloth.ClothSearchRequest;
 import com.clothingstore.entity.Cloth;
+import com.clothingstore.dto.cloth.ClothSearchRequest;
+import com.clothingstore.consts.enums.SearchCloth;
 import com.clothingstore.repo.ClothProjection;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,7 +27,7 @@ public interface ClothService {
 
     Page<ClothProjection> findByInputText(SearchCloth searchType, String text, Pageable pageable);
 
-    Cloth saveCloth(Cloth cloth, MultipartFile file) throws Exception;
+    Cloth saveCloth(Cloth cloth, MultipartFile file);
 
     Cloth editCloth(Cloth cloth, MultipartFile file, Long clothId);
 
