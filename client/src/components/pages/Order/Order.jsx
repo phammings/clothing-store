@@ -46,9 +46,17 @@ const Order = () => {
 
     const onFormSubmit = (order) => {
         const clothesId = Object.fromEntries(new Map(JSON.parse(localStorage.getItem("clothes"))));
+        console.log(order)
         dispatch(addOrder({ order: { ...order, clothesId, totalPrice }, history }));
     };
+    const [creditCard, setCreditCard] = useState('');
 
+    const handleCreditCardChange = (e) => {
+        const inputValue = e.target.value;
+        if (inputValue.length <= 16) {
+            setCreditCard(inputValue);
+        }
+    };
     return (
         <ContentWrapper>
             <div style={{ textAlign: "center" }}>
@@ -102,6 +110,7 @@ const Order = () => {
                             disabled={isOrderLoading}
                             placeholder={"(___)-___-____"}
                         />
+
                         <FormInput
                             title={"Email:"}
                             titleSpan={5}
@@ -110,8 +119,7 @@ const Order = () => {
                             error={errors.emailError}
                             disabled={isOrderLoading}
                             placeholder={"example@gmail.com"}
-                        />
-                        <Row style={{ marginTop: "20px" }} />
+                        />          <Row style={{ marginTop: "20px" }} />
                         <FormInput
                             title={"Credit Card:"}
                             titleSpan={5}
@@ -120,7 +128,33 @@ const Order = () => {
                             error={errors.postIndexError}
                             disabled={isOrderLoading}
                             placeholder={"Enter credit card number"}
+                            maxLength={16}
                         />
+                        {/* <Row style={{ marginTop: "10px" }} />
+                        <div style={{display:"flex",justifyContent:'space-between'}}>
+                            <label>Credit Card</label>                       
+                            <input style={{
+    width: "79%",
+    borderColor: "#eaeae1",
+    borderRadius: "1px",
+    boxShadow: "none", // Remove the default box shadow
+    ":focus": { borderColor: "lightblue" }, 
+    outlineColor: "lightblue",
+    padding: "3px 0 3px 10px"
+}}
+
+            title={"Credit Card:"}
+            titleSpan={5}
+            wrapperSpan={19}
+            name={"creditCard"}
+            value={creditCard}
+            onChange={handleCreditCardChange}
+            error={errors.postIndexError}
+            disabled={isOrderLoading}
+            placeholder={"Enter credit card number"}
+            maxLength={16}
+        />
+ </div> */}
                     </Col>
                     <Col span={12}>
                         <Row gutter={[32, 32]}>

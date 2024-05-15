@@ -4,11 +4,12 @@ import { Card, Col, Typography } from "antd";
 import "./OrderItem.css";
 
 const OrderItem = ({ cloth, quantity }) => {
+    const imageUrl = `http://localhost:8080/static/assets/images/${cloth.filename}`;
     return (
         <Col span={12}>
             <Card
                 className={"menu-card"}
-                cover={<img className={"menu-card-image"} alt={cloth.title} src={cloth.filename} />}
+                cover={<img className={"menu-card-image"} alt={cloth.title} src={imageUrl} />}
             >
                 <div className={"menu-content"}>
                     <Typography.Text strong>{cloth.clother}</Typography.Text>
