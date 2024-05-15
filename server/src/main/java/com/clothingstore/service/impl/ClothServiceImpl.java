@@ -1,15 +1,16 @@
 package com.clothingstore.service.impl;
 
 import com.clothingstore.consts.ErrorMessage;
-import com.clothingstore.consts.enums.SearchCloth;
-import com.clothingstore.dto.cloth.ClothSearchRequest;
 import com.clothingstore.entity.Cloth;
+import com.clothingstore.dto.cloth.ClothSearchRequest;
+import com.clothingstore.consts.enums.SearchCloth;
 import com.clothingstore.exception.ApiRequestException;
 import com.clothingstore.repo.ClothProjection;
 import com.clothingstore.repo.ClothRepository;
 import com.clothingstore.service.ClothService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -71,36 +72,37 @@ public class ClothServiceImpl implements ClothService {
 
     @Override
     public Page<ClothProjection> findByInputText(SearchCloth searchType, String text, Pageable pageable) {
-        if(searchType.equals(SearchCloth.BRAND)){
-            return clothRepository.findByBrand(text,pageable);
-        } else if (searchType.equals(SearchCloth.TITLE)) {
-            return clothRepository.findByTitle(text, pageable);
-        }else {
-            return clothRepository.findByCountry(text, pageable);
-        }
+      if(searchType.equals(SearchCloth.BRAND)){
+          return clothRepository.findByBrand(text,pageable);
+      } else if (searchType.equals(SearchCloth.TITLE)) {
+          return clothRepository.findByTitle(text, pageable);
+      }else {
+          return clothRepository.findByCountry(text, pageable);
+      }
     }
 
     @Override
-    public Cloth saveCloth(Cloth cloth, MultipartFile file) throws Exception {
-        try {
-            String filename = generateUniqueFilename(file);
-            byte[] bytes = file.getBytes();
-            Path path = Paths.get("src/main/resources/static/images/" + filename);
-            Files.write(path, bytes);
-            cloth.setFilename(filename);
-            return clothRepository.save(cloth);
-        } catch (IOException e) {
-            // Handle file I/O exception
-            e.printStackTrace();
-            // throw new FileProcessingException("Error saving file: " + e.getMessage());
-            throw new Exception(e.getMessage());
+    public Cloth saveCloth(Cloth cloth, MultipartFile file) {
+        if (file == null || file.isEmpty()) {
+            cloth.setFilename("default.jpg");
+        } else {
+            try {
+                // Get the file extension
+                String fileExtension = getFileExtension(file);
+                // Generate a unique filename
+                String filename = UUID.randomUUID().toString() + "." + fileExtension;
+                // Set the filename in the cloth object
+                cloth.setFilename(filename);
+                // Save the file to the desired location
+                byte[] bytes = file.getBytes();
+                Path path = Paths.get("src/main/resources/static/assets/images/" + filename);
+                Files.write(path, bytes);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-    }
-
-    private String generateUniqueFilename(MultipartFile file) {
-        String originalFilename = file.getOriginalFilename();
-        String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
-        return UUID.randomUUID().toString() + extension;
+        // Save the cloth object in the database
+        return clothRepository.save(cloth);
     }
     @CacheEvict(value = "allCloths", allEntries = true)
     @Override
@@ -157,9 +159,19 @@ public class ClothServiceImpl implements ClothService {
     }
     @Override
     public String deleteCloth(Long clothId) {
-        Cloth cloth = clothRepository.findById(clothId)
-                .orElseThrow(()-> new ApiRequestException(ErrorMessage.CLOTH_NOT_FOUND, HttpStatus.NOT_FOUND));
-        clothRepository.delete(cloth);
-        return "Cloth deleted successfully";
+        try {
+            Cloth cloth = clothRepository.findById(clothId)
+                    .orElseThrow(() -> new ApiRequestException(ErrorMessage.CLOTH_NOT_FOUND, HttpStatus.NOT_FOUND));
+            clothRepository.delete(cloth);
+            return "Cloth deleted successfully";
+        } catch (DataIntegrityViolationException e) {
+            throw new ApiRequestException("Cannot delete cloth because it is referenced in orders.", HttpStatus.BAD_REQUEST);
+        } catch (ApiRequestException e) {
+            throw e; // Rethrow the exception as it is
+        } catch (Exception e) {
+            throw new ApiRequestException("An unexpected error occurred while deleting the cloth.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
+
 }
