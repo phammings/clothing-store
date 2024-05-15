@@ -28,9 +28,9 @@ export const addCloth = createAsyncThunk(
 
 export const updateCloth = createAsyncThunk(
     "admin/updateCloth",
-    async (data, thunkApi) => {
+    async ({ clothId, data }, thunkApi) => { // Accept clothId and data as parameters
         try {
-            const response = await RequestService.post(ADMIN_EDIT, data, true, "multipart/form-data");
+            const response = await RequestService.post(`${ADMIN_EDIT}/${clothId}`, data, true, "multipart/form-data"); // Include clothId in the API link
             thunkApi.dispatch(setCloth(response.data));
             return response.data;
         } catch (error) {
@@ -38,6 +38,7 @@ export const updateCloth = createAsyncThunk(
         }
     }
 );
+
 
 export const deleteCloth = createAsyncThunk(
     "admin/deleteCloth",
