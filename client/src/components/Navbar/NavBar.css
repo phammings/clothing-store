@@ -1,0 +1,45 @@
+.navbar-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  background-color: #000000;
+}
+
+.navbar-logo {
+  color: white;
+  text-align: center;
+  height: height;
+  width: 20%;
+}
+
+.navbar-logo:hover {
+  color: #46cbff;
+  transition: .4s;
+}
+
+.navbar-wrapper {
+  background-color: #000000;
+}
+
+.navbar-wrapper a {
+  color: white;
+  transition: .4s;
+}
+
+.navbar-wrapper a:hover {
+  color: #46cbff;
+  text-decoration: none;
+}
+
+.navbar-wrapper ul li {
+  padding: 15px;
+  font-weight: 500;
+}
+
+.navbar-cart {
+  padding: 0 !important;
+}
+
+.navbar-cart svg {
+  font-size: 30px;
+}
