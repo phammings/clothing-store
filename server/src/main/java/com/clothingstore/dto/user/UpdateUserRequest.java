@@ -21,5 +21,5 @@ public class UpdateUserRequest {
     private String city;
     private String address;
     private String phoneNumber;
-    private String creditCardNumber;
+    private String postIndex;
 }
