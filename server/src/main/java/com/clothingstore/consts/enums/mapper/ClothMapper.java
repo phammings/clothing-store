@@ -1,12 +1,12 @@
 package com.clothingstore.dto.mapper;
 
-import com.clothingstore.entity.Cloth;
+import com.clothingstore.consts.enums.SearchCloth;
 import com.clothingstore.dto.HeaderResponse;
 import com.clothingstore.dto.cloth.ClothRequest;
 import com.clothingstore.dto.cloth.ClothResponse;
 import com.clothingstore.dto.cloth.ClothSearchRequest;
 import com.clothingstore.dto.cloth.FullClothResponse;
-import com.clothingstore.consts.enums.SearchCloth;
+import com.clothingstore.entity.Cloth;
 import com.clothingstore.exception.InputFieldException;
 import com.clothingstore.repo.ClothProjection;
 import com.clothingstore.service.ClothService;
@@ -57,7 +57,7 @@ public class ClothMapper {
         return commonMapper.getHeaderResponse(cloths.getContent(), cloths.getTotalPages(), cloths.getTotalElements(), ClothResponse.class);
     }
 
-    public FullClothResponse saveCloth(ClothRequest clothRequest, MultipartFile file, BindingResult bindingResult) {
+    public FullClothResponse saveCloth(ClothRequest clothRequest, MultipartFile file, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
             throw new InputFieldException(bindingResult);
         }

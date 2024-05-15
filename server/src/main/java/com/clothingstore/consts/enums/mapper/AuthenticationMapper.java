@@ -1,11 +1,11 @@
 package com.clothingstore.dto.mapper;
 
-import com.clothingstore.entity.User;
 import com.clothingstore.dto.auth.AuthenticationRequest;
 import com.clothingstore.dto.auth.AuthenticationResponse;
 import com.clothingstore.dto.auth.PasswordResetRequest;
 import com.clothingstore.dto.auth.RegistrationRequest;
 import com.clothingstore.dto.user.UserResponse;
+import com.clothingstore.entity.User;
 import com.clothingstore.exception.InputFieldException;
 import com.clothingstore.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;

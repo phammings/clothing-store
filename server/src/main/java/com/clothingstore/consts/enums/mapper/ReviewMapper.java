@@ -1,8 +1,8 @@
 package com.clothingstore.dto.mapper;
 
-import com.clothingstore.entity.Review;
 import com.clothingstore.dto.review.ReviewRequest;
 import com.clothingstore.dto.review.ReviewResponse;
+import com.clothingstore.entity.Review;
 import com.clothingstore.exception.InputFieldException;
 import com.clothingstore.service.ReviewService;
 import lombok.RequiredArgsConstructor;

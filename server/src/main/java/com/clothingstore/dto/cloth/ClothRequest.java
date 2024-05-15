@@ -30,14 +30,14 @@ public class ClothRequest {
     @Length(max = 255)
     private String gender;
 
-//    @Length(max = 255)
-//    private String topNote;
-//
-//    @Length(max = 255)
-//    private String middleNote;
-//
-//    @Length(max = 255)
-//    private String baseNote;
+    @Length(max = 255)
+    private String topNote;
+
+    @Length(max = 255)
+    private String middleNote;
+
+    @Length(max = 255)
+    private String baseNote;
 
     @NotBlank(message = FILL_IN_THE_INPUT_FIELD)
     @Length(max = 255)
