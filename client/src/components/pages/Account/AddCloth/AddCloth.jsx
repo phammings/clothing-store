@@ -172,7 +172,7 @@ const AddCloth = () => {
                             />
                         </Form.Item>
 
-                        <Form.Item
+                        {/* <Form.Item
                             name="middleNote"
                             label="Heart notes"
                             rules={[{ required: true, message: "Please enter the heart notes" }]}
@@ -181,7 +181,7 @@ const AddCloth = () => {
                                 placeholder="Enter the heart notes"
                                 disabled={ispClothLoading}
                             />
-                        </Form.Item>
+                        </Form.Item> */}
                         <Form.Item
                             name="price"
                             label="Price"
@@ -219,17 +219,8 @@ const AddCloth = () => {
                                 disabled={ispClothLoading}
                             />
                         </Form.Item>
-                        <Form.Item
-                            name="topNote"
-                            label="Top notes"
-                            rules={[{ required: true, message: "Please enter the top notes" }]}
-                        >
-                            <Input
-                                placeholder="Enter the top notes"
-                                disabled={ispClothLoading}
-                            />
-                        </Form.Item>
-                        <Form.Item
+
+                        {/* <Form.Item
                             name="baseNote"
                             label="Base notes"
                             rules={[{ required: true, message: "Please enter the base notes" }]}
@@ -238,7 +229,7 @@ const AddCloth = () => {
                                 placeholder="Enter the base notes"
                                 disabled={ispClothLoading}
                             />
-                        </Form.Item>
+                        </Form.Item> */}
                         <Form.Item
                             name="description"
                             label="Description"
