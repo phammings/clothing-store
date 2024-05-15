@@ -12,6 +12,7 @@ import {
     FORGOT,
     LOGIN,
     MENU,
+    OAUTH2_REDIRECT,
     ORDER,
     ORDER_FINALIZE,
     PRODUCT,
@@ -31,8 +32,9 @@ import Product from "./components/pages/Product/Product";
 import ResetPassword from "./components/pages/ResetPassword/ResetPassword";
 import Account from "./components/pages/Account/Account";
 import OrderFinalize from "./components/pages/OrderFinalize/OrderFinalize";
-import Navbar from "./components/Navbar/Navbar";
+import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import OAuth2RedirectHandler from "./security/oauth2/OAuth2RedirectHandler";
 import "./App.css";
 
 const App = () => {
@@ -51,7 +53,7 @@ const App = () => {
 
     return (
         <>
-            <Navbar />
+            <NavBar />
             <Switch>
                 <Route exact path={BASE} component={Home} />
                 <Route exact path={LOGIN} component={Login} />
@@ -64,6 +66,7 @@ const App = () => {
                 <Route exact path={CART} component={Cart} />
                 <Route exact path={ORDER} component={Order} />
                 <Route exact path={ORDER_FINALIZE} component={OrderFinalize} />
+                <Route path={OAUTH2_REDIRECT} component={OAuth2RedirectHandler} />
                 <Route
                     path={ACCOUNT}
                     render={() =>
