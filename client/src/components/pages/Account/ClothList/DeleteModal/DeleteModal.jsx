@@ -1,23 +1,27 @@
+// DeleteModal.jsx
 import React from "react";
-import { Col, Modal, Row, Typography } from "antd";
-
-import "./DeleteModal.css";
+import { Button, Modal, Row, Col, Typography } from "antd";
 
 const DeleteModal = ({ visible, deleteClothHandler, handleCancel, clothInfo }) => {
+    const onDelete = () => {
+        deleteClothHandler();
+        handleCancel();
+    };
+
     return (
-        <Modal title="Delete cloth" visible={visible} onOk={deleteClothHandler} onCancel={handleCancel}>
+        <Modal title="Delete cloth" visible={visible} onOk={onDelete} onCancel={handleCancel}>
             <Row>
-                <Col span={12} className={"delete-modal-cloth-image-wrapper"}>
+                <Col span={12}>
                     <img
-                        className={"delete-modal-cloth-image"}
-                        alt={clothInfo?.title}
-                        src={clothInfo?.filename}
+                        src={clothInfo && clothInfo.filename} // Check if clothInfo is not null before accessing its properties
+                        alt={clothInfo && clothInfo.title}
+                        style={{ width: "100%" }}
                     />
                 </Col>
                 <Col span={12}>
-                    <Typography.Text>Are you sure too delete?</Typography.Text>
-                    <Typography.Title level={5}>{clothInfo?.clother}</Typography.Title>
-                    <Typography.Title level={5}>{clothInfo?.title}</Typography.Title>
+                    <Typography.Paragraph>Are you sure to delete?</Typography.Paragraph>
+                    <Typography.Title level={5}>{clothInfo && clothInfo.clother}</Typography.Title>
+                    <Typography.Title level={5}>{clothInfo && clothInfo.title}</Typography.Title>
                 </Col>
             </Row>
         </Modal>
