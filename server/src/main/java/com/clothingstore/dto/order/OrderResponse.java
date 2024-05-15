@@ -17,5 +17,5 @@ public class OrderResponse {
     private String address;
     private String email;
     private String phoneNumber;
-    private Integer creditCardNumber;
+    private Integer postIndex;
 }

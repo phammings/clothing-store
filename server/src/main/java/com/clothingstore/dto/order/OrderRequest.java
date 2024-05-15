@@ -37,5 +37,5 @@ public class OrderRequest {
 
     @NotNull(message = EMPTY_CREDIT_CARD)
     @Min(value = 5, message = "credit card must contain 5 digits")
-    private Integer creditCard;
+    private String creditCard;
 }
