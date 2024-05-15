@@ -33,7 +33,7 @@ import static com.clothingstore.consts.ErrorMessage.*;
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-//    private final AuthenticationManager authenticationManager;
+    //    private final AuthenticationManager authenticationManager;
     private final RestTemplate restTemplate;
     private final JwtProvider jwtProvider;
     private final MailSender mailSender;
