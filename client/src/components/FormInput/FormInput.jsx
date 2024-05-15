@@ -5,7 +5,6 @@ import "./FormInput.css";
 
 const FormInput = ({
     title,
-    icon,
     titleSpan,
     wrapperSpan,
     name,
@@ -13,19 +12,19 @@ const FormInput = ({
     placeholder,
     disabled,
     rule,
-    inputPassword
+    inputPassword,
+    maxLength // Add this prop
 }) => (
     <Row className="form-item">
         <Col span={titleSpan}>
             <Typography.Text>{title}</Typography.Text>
-            {icon}
         </Col>
         <Col span={wrapperSpan}>
             <Form.Item name={name} help={error} validateStatus={error ? "error" : ""} rules={rule}>
                 {inputPassword ? (
-                    <Input.Password disabled={disabled} placeholder={placeholder} />
+                    <Input.Password disabled={disabled} placeholder={placeholder} maxLength={maxLength} /> // Apply maxLength to Input.Password
                 ) : (
-                    <Input disabled={disabled} placeholder={placeholder} />
+                    <Input disabled={disabled} placeholder={placeholder} maxLength={maxLength} /> // Apply maxLength to Input
                 )}
             </Form.Item>
         </Col>

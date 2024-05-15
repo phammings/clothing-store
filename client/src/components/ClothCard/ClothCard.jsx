@@ -1,3 +1,4 @@
+// ClothCard.jsx
 import React from "react";
 import { Button, Card, Col, Rate, Typography } from "antd";
 import { Link } from "react-router-dom";
@@ -8,20 +9,20 @@ import { ACCOUNT_ADMIN_CLOTHES, PRODUCT } from "../../constants/routeConstants";
 import { useCart } from "../../hooks/useCart";
 import "./ClothCard.css";
 
-const ClothCard = ({ cloth, colSpan, edit, onOpenDelete }) => {
+const ClothCard = ({ cloth, colSpan, edit, onDelete }) => { // Update props to include onDelete
     const { addToCart } = useCart(cloth.id);
 
     const onClickAddToCart = (event) => {
         event.preventDefault();
         addToCart();
     };
-
+    const imageUrl = `http://localhost:8080/static/assets/images/${cloth.filename}`;
     return (
         <Col span={colSpan}>
             <Link to={`${PRODUCT}/${cloth.id}`}>
                 <Card
                     className={"cloth-card"}
-                    cover={<img className={"cloth-card-image"} alt={cloth.title} src={cloth.filename} />}
+                    cover={<img className={"cloth-card-image"} alt={cloth.title} src={imageUrl} />}
                     hoverable
                     actions={
                         edit
@@ -29,9 +30,20 @@ const ClothCard = ({ cloth, colSpan, edit, onOpenDelete }) => {
                                   <Link to={`${ACCOUNT_ADMIN_CLOTHES}/${cloth.id}`}>
                                       <Button icon={<EditOutlined />}>Edit</Button>
                                   </Link>,
-                                  <Button icon={<DeleteOutlined />} onClick={() => onOpenDelete(cloth)} danger>
-                                      Delete
-                                  </Button>
+                   <Button
+                   style={{ zIndex: 9 }}
+                   icon={<DeleteOutlined />}
+                   onClick={(event) => {
+                       event.preventDefault(); // Prevent default action
+                       event.stopPropagation(); // Stop event propagation
+                       onDelete(cloth.id); // Call onDelete with cloth id
+                   }}
+                   danger
+               >
+                   Delete
+               </Button>
+               
+                            
                               ]
                             : [
                                   <Button icon={<ShoppingCartOutlined />} onClick={onClickAddToCart}>
