@@ -43,12 +43,12 @@ public class Order {
 
     @Column(name = "email")
     private String email;
-    
+
     @Column(name = "phone_number")
     private String phoneNumber;
 
     @Column(name = "credit_card")
-    private Integer creditCard;
+    private String creditCard;
 
     @OneToMany(fetch = FetchType.EAGER)
     private List<OrderItem> orderItems;
@@ -69,5 +69,11 @@ public class Order {
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
+    }// Add this method to the Order class
+
+//    @Column(name = "post_index")
+//    private String postIndex;
+//    public String getPostIndex() {
+//        return postIndex; // Assuming postIndex is a field in the Order class
+//    }
 }
