@@ -51,7 +51,7 @@
                                       th:remove="tag"></span></p>
                 <p><b>Address:</b> <span th:text="${order.getCity() + ' ' + order.getAddress()}" th:remove="tag"></span>
                 </p>
-                <p><b>Post index:</b> <span th:text="${order.getPostIndex()}" th:remove="tag"></span></p>
+<!--                <p><b>Post index:</b> <span th:text="${order.getPostIndex()}" th:remove="tag"></span></p>-->
                 <p><b>Phone:</b> <span th:text="${order.getPhoneNumber()}" th:remove="tag"></span></p>
             </div>
             <th:block th:each="orderItem : ${order.getOrderItems()}">
@@ -60,8 +60,10 @@
                     <tr>
                         <td style="width: 95px;" class="content">
                             <img style="width: 100%; height: auto"
-                                 th:src="@{{path} (path = ${orderItem.getCloth().getFilename()})}"/>
+                                 th:src="@{'http://localhost:8080/static/assets/images/' + ${orderItem.getCloth().getFilename()}}"
+                                 src="http://localhost:8080/static/assets/images/${orderItem.getCloth().getFilename()}"/>
                         </td>
+
                         <td style="width: 179px;" class="content">
                             <p><b th:text="${orderItem.getCloth().getBrand()}"></b><br/>
                                 <span style="font-size: 14px">
