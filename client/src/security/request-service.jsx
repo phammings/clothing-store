@@ -1,7 +1,5 @@
 import axios from "axios";
-
 import { API_BASE_URL } from "../constants/urlConstants";
-
 class RequestService {
     get(url, isAuthRequired = false, contentType = "application/json") {
         return createRequest("GET", url, null, isAuthRequired, contentType);
