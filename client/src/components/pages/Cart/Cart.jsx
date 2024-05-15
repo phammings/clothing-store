@@ -65,6 +65,7 @@ const Cart = () => {
         localStorage.setItem("clothes", JSON.stringify(Array.from(clothInCart.entries())));
     };
 
+
     return (
         <ContentWrapper>
             {isCartLoading ? (
