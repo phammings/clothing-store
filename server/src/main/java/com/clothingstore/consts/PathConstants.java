@@ -9,6 +9,14 @@ public class PathConstants {
     public static final String USER = "/user";
     public static final String GRAPHQL = "/graphql";
 
+    public static final String API_V1_ADMIN = API_V1 + "/admin";
+    public static final String API_V1_AUTH = API_V1 + "/auth";
+    public static final String API_V1_ORDER = API_V1 + ORDER;
+    public static final String API_V1_CLOTHS = API_V1 + CLOTHS;
+    public static final String API_V1_REGISTRATION = API_V1 + "/registration";
+    public static final String API_V1_REVIEW = API_V1 + "/review";
+    public static final String API_V1_USERS = API_V1 + "/users";
+
     public static final String ADD = "/add";
     public static final String EDIT = "/edit";
     public static final String CART = "/cart";
@@ -25,14 +33,6 @@ public class PathConstants {
     public static final String GRAPHQL_USER_ALL = GRAPHQL + USER + "/all";
     public static final String GRAPHQL_ORDERS = GRAPHQL + ORDERS;
     public static final String GRAPHQL_ORDER = GRAPHQL + ORDER;
-
-    public static final String API_V1_ADMIN = API_V1 + "/admin";
-    public static final String API_V1_AUTH = API_V1 + "/auth";
-    public static final String API_V1_ORDER = API_V1 + ORDER;
-    public static final String API_V1_CLOTHS = API_V1 + CLOTHS;
-    public static final String API_V1_REGISTRATION = API_V1 + "/registration";
-    public static final String API_V1_REVIEW = API_V1 + "/review";
-    public static final String API_V1_USERS = API_V1 + "/users";
 
     public static final String LOGIN = "/login";
     public static final String FORGOT_EMAIL = "/forgot/{email}";
