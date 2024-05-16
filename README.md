@@ -25,6 +25,8 @@
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#instructions">Instructions</a></li>
     <li><a href="#demo">Video Demo</a></li>
+    <li><a href="#screencaps">Screencaps</a></li>
+    <li><a href="#notes">Notes</a></li>
   </ol>
 </details>
 
@@ -110,9 +112,19 @@ The project focuses on creating a full stack ecommerce application that showcase
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- SCREENCAPS -->
+## Screencaps
 
-<!-- NOTE -->
-## Note
+![Image](screencaps/Home.png)
+![Image](screencaps/Menu.png)
+![Image](screencaps/Admin.png)
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- NOTES -->
+## Notes
 
 - Admin credentials:
   - Admin Login: ```admin@gmail.com```
@@ -120,6 +132,7 @@ The project focuses on creating a full stack ecommerce application that showcase
   
 
 - When an admin upload a new item to the store, it may take up to 30 mins for the store to update. To avoid this, re-run the server backend.
+- If you cannot  upload any item images as admin, you must change file permissions of static.asset.images to be able to read, write, execute.
 
 
 
