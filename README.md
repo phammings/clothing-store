@@ -7,7 +7,7 @@
 <h3 align="center">Full Stack Clothing Store</h3>
 
   <p align="center">
-    A full stack ecommerce application using React for the frontend, Spring Boot Java for the backend, PostgreSQL as the database, and GraphQL for queries. The application includes user login, registration, authentication, and captcha verification.
+    A full stack ecommerce application using React for the frontend, Spring Boot Java for the backend, PostgreSQL as the database, and GraphQL for queries. The application includes user login, registration, authentication, and captcha verification along with admin controls.
   </p>
 </div>
 
@@ -33,7 +33,7 @@
 ## About The Project
 
 
-The project focuses on creating a full stack ecommerce application that showcases a clothing store. The backend is built with Spring Boot Java, interfacing with a PostgreSQL database, and using GraphQL for queries. The frontend is developed with React, providing a dynamic and responsive user interface. The application includes full user authentication with login and registration features, as well as captcha verification to enhance security.
+The project focuses on creating a full stack ecommerce application that showcases a clothing store. The backend is built with Spring Boot Java, interfacing with a PostgreSQL database, and using GraphQL for queries. The frontend is developed with React, providing a dynamic and responsive user interface. The application includes full user authentication with login and registration features, as well as captcha verification to enhance security. It also features admin controls to manage items, orders and users.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -107,6 +107,14 @@ The project focuses on creating a full stack ecommerce application that showcase
 ## Video Demo
 
 [![](https://markdown-videos-api.jorgenkh.no/youtube/]()
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- NOTE -->
+## Note
+
+When an admin upload a new item to the store, it may take up to 30 mins for the store to update. To avoid this, re-run the server backend.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
