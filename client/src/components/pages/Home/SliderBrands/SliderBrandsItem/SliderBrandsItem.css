@@ -1,0 +1,10 @@
+.slider-brand-item {
+    position: relative;
+}
+
+.slider-brand-item-link {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    margin-left: -110px;
+}
