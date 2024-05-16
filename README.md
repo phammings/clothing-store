@@ -83,7 +83,7 @@ The project focuses on creating a full stack ecommerce application that showcase
     - ```docker-compose build --no-cache```
 2) Compose the Docker image:
     - ```docker-compose up```
-<br>
+    
 - Manual Installation:
   - Client frontend:
     1) ```npm install```
