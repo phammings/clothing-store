@@ -106,7 +106,7 @@ The project focuses on creating a full stack ecommerce application that showcase
 <!-- DEMO -->
 ## Video Demo
 
-[![](https://markdown-videos-api.jorgenkh.no/youtube/]()
+[![](https://markdown-videos-api.jorgenkh.no/youtube/e9M33RZeYQw)](https://youtu.be/e9M33RZeYQw)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -114,7 +114,17 @@ The project focuses on creating a full stack ecommerce application that showcase
 <!-- NOTE -->
 ## Note
 
-When an admin upload a new item to the store, it may take up to 30 mins for the store to update. To avoid this, re-run the server backend.
+- Admin credentials:
+  - Admin Login: ```admin@gmail.com```
+  - Admin Password: ```admin123```
+  
+
+- When an admin upload a new item to the store, it may take up to 30 mins for the store to update. To avoid this, re-run the server backend.
+
+
+
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
