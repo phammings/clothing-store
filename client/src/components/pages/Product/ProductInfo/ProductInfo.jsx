@@ -44,22 +44,18 @@ const ProductInfo = ({ cloth, reviewsLength, addToCart }) => {
                 <Divider />
                 <Row>
                     <Col span={8}>
+                        <Description title={"Title:"} />
                         <Description title={"Gender:"} />
-                        <Description title={"Volume:"} />
-                        <Description title={"Release year:"} />
-                        <Description title={"Manufacturer country:"} />
-                        <Description title={"Top notes:"} />
-                        <Description title={"Heart notes:"} />
-                        <Description title={"Base notes:"} />
+                        <Description title={"Type:"} />
+                        <Description title={"Year:"} />
+                        <Description title={"Country:"} />
                     </Col>
-                    <Col span={16}>
+                    <Col span={8}>
+                        <Description title={cloth?.title} />
                         <Description title={cloth?.clothGender} />
-                        <Description title={`${cloth?.volume} ml.`} />
+                        <Description title={cloth?.type} />
                         <Description title={cloth?.year} />
                         <Description title={cloth?.country} />
-                        <Description title={cloth?.fragranceTopNotes} />
-                        <Description title={cloth?.fragranceMiddleNotes} />
-                        <Description title={cloth?.fragranceBaseNotes} />
                     </Col>
                 </Row>
             </Col>
