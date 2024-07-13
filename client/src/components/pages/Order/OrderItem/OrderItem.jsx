@@ -4,7 +4,7 @@ import { Card, Col, Typography } from "antd";
 import "./OrderItem.css";
 
 const OrderItem = ({ cloth, quantity }) => {
-    const imageUrl = `http://localhost:8080/static/assets/images/${cloth.filename}`;
+    const imageUrl = `http://backend:8080/static/assets/images/${cloth.filename}`;
     return (
         <Col span={12}>
             <Card

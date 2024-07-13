@@ -4,7 +4,7 @@ import { Col, Typography } from "antd";
 
 
 const CartItemInfo = memo(({ cloth }) => {
-     const imageUrl = `http://localhost:8080/static/assets/images/${cloth.filename}`;
+     const imageUrl = `http://backend:8080/static/assets/images/${cloth.filename}`;
 
     return (
         <>
