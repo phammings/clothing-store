@@ -1,6 +1,5 @@
 package com.clothingstore.configurations;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -11,9 +10,6 @@ import org.springframework.web.servlet.resource.VersionResourceResolver;
 
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer {
-
-    @Value("${hostname}")
-    private String hostname;
 
     @Bean
     public RestTemplate getRestTemplate() {
@@ -28,14 +24,4 @@ public class WebConfiguration implements WebMvcConfigurer {
                 .resourceChain(true)
                 .addResolver(new VersionResourceResolver().addContentVersionStrategy("/**"));
     }
-
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("http://" + hostname)
-                .allowedMethods("HEAD", "OPTIONS", "GET", "POST", "PUT", "PATCH", "DELETE")
-                .exposedHeaders("page-total-count", "page-total-elements")
-                .allowedHeaders("*");
-    }
 }
-

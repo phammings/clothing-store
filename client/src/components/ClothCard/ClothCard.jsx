@@ -16,7 +16,7 @@ const ClothCard = ({ cloth, colSpan, edit, onDelete }) => { // Update props to i
         event.preventDefault();
         addToCart();
     };
-    const imageUrl = `http://localhost:8080/static/assets/images/${cloth.filename}`;
+    const imageUrl = `http://backend:8080/static/assets/images/${cloth.filename}`;
     return (
         <Col span={colSpan}>
             <Link to={`${PRODUCT}/${cloth.id}`}>

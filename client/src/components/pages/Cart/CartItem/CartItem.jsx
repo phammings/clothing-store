@@ -19,7 +19,7 @@ const CartItem = ({
         setClothCount(value);
         onChangeClothItemCount(cloth.id, value);
     };
-    const imageUrl = `http://localhost:8080/static/assets/images/${cloth.filename}`;
+    const imageUrl = `http://backend:8080/static/assets/images/${cloth.filename}`;
 
     return (
         <Card className="cart-item">

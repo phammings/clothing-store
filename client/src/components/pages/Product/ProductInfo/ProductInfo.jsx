@@ -5,7 +5,7 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 import Description from "./Description/Description";
 
 const ProductInfo = ({ cloth, reviewsLength, addToCart }) => {
-    const imageUrl = `http://localhost:8080/static/assets/images/${cloth.filename}`;
+    const imageUrl = `http://backend:8080/static/assets/images/${cloth.filename}`;
 
     return (
         <Row>
